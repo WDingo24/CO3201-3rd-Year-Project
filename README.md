@@ -1,4 +1,4 @@
-# Your project name here
+# Animating Digital Arithmetic
 
 ## Information about this repository
 
