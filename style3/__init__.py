@@ -1,3 +1,12 @@
-from . import gui
+import structs
 
-root = gui.Window()
+import tkinter as tk
+
+class Window(tk.Tk):
+    def __init__(self, cnf: dict={}, **kwargs):
+        kwargs = cnf or kwargs
+        super().__init__(**kwargs)
+
+        self.currentState = structs.Stack()
+
+root = Window()
