@@ -2,3 +2,5 @@ structs
 *.pyc
 __pycache__
 .DS_Store
+*.aux
+*.log
