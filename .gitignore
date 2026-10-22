@@ -1,7 +1,13 @@
 structs
+
+# Optimized python files
+__pycache__/
 *.pyc
-__pycache__
-.DS_Store
+
+# (La)TeX intermediary files
 *.aux
 *.log
 *.toc
+
+# MacOS file system artefact
+.DS_Store
