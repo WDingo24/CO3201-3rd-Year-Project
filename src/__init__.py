@@ -1,3 +1,3 @@
-from . import gui
+from . import window
 
-root = gui.Window()
+root = window.Window()
