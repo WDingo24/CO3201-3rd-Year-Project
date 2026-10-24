@@ -9,4 +9,4 @@ E-ANM07-N, Output Usability, The system must generate standalone video files as 
 E-GUI01-F, GUI Inclusion, The system must include a GUI.
 E-ANM08-F, Written Subtraction, The system must generate animations of the long subtraction method with carries.
 E-ANM09-F, Computed Subtraction, The system must generate animations of the two's compliment method of subtraction.
-E-ANM10-F, Carry Over Addition, The system must generation animations of the long addition method with carries.
+E-ANM10-F, Written Addition, The system must generation animations of the long addition method with carries.
