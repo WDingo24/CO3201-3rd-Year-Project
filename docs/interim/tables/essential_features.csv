@@ -1,0 +1,12 @@
+ID,Name,Description
+E-ANM01-F, Animating Addition, The system must generate animations of addition in binary.
+E-ANM02-F, Animating Subtraction, The system must generate animations of subtraction in binary.
+E-ANM03-F, Animating Multiplication, The system must generate animations of multiplication in binary.
+E-ANM04-F, Animating Division, The system must generate animations of division in binary.
+E-ANM06-F, Arithmetic Inputs, The system must allow the operands to be input by the user.
+E-ANM05-F, Minimum Binary Precision, The system must allow for operands of at least 8-bits.
+E-ANM07-N, Output Usability, The system must generate standalone video files as output.
+E-GUI01-F, GUI Inclusion, The system must include a GUI.
+E-ANM08-F, Written Subtraction, The system must generate animations of the long subtraction method with carries.
+E-ANM09-F, Computed Subtraction, The system must generate animations of the two's compliment method of subtraction.
+E-ANM10-F, Carry Over Addition, The system must generation animations of the long addition method with carries.
