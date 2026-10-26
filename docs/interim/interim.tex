@@ -17,9 +17,12 @@
 \pagenumbering{roman}
 \setcounter{page}{2}
 
+\ \newpage
+
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-\newpage
+
+\newpage \ \newpage
 
 \tableofcontents
 \addcontentsline{toc}{chapter}{Contents}
@@ -27,7 +30,8 @@
 
 \pagenumbering{arabic}
 
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 
 \chapter{Literature Review}
 
@@ -36,8 +40,10 @@
 \section{Requirements}
 
 \begin{landscape}
+
 	\subsection{Essential Features}
 	\csvautotabular{tables/essential_features.csv}
+
 \end{landscape}
 
 \subsection{Desirable Features}
