@@ -1,0 +1,4 @@
+ID,Name,Description
+D-GUI02-F,GUI Blocking,The generation of animations must not block execution of the GUI.
+D-GUI03-F,Progress Bar,The system should display a progress bar when generating animations.
+D-GUI04-F,Animation Preview,The system should offer the user the option to view a lower quality preview of the animation they are generating.
