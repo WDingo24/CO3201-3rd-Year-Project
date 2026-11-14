@@ -4,6 +4,7 @@
 \usepackage{pdflscape}
 \usepackage{csvsimple}
 \usepackage{booktabs}
+\usepackage[none]{hyphenat}
 
 \title{Animating Digital Arithmetic}
 \author{Will Dargan}
@@ -32,7 +33,6 @@
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
-
 This project revolves around an application that enables the user to dynamically
 generate educational animations of simple arithmetic and bitwise logic on binary
 numbers.
@@ -45,13 +45,82 @@ numbers.
 
 \chapter{Literature Review}
 
-\section{Academic Theory}
+\section{Underpinning Theory}
 
 \section{Technology Stack}
+As will be outlined and explained in much more depth in Section
+\ref{software arch}, the final solution will be broken down into three major
+components: a GUI; a component for generating scripts that animations may be
+generated from; and finally a component for generating the animations
+themselves. As the second component is largely language and framework agnostic,
+the following paragraphs do not contain a dedicated section for it.
+However, there is a section on the choice of programming language, so this
+component will be considered there.
+
+\subsection{Language}
+There are a small few languages that I have some experience with and that would
+be suitable for a large scale project. Each of them is listed below with a
+brief description of their characteristics:
+
+\paragraph{C++}
+An incredibly fast and versatile compiled language that provides the
+programmer with direct access to memory without a garbage collector.
+C++ supports both functional and object-oriented programming paradigms.
+
+\paragraph{HTML/CSS/JS}
+This suite of languages comprises the tech stack used by all modern browsers to
+render webpages and enable interactivity. There are a large number of
+third-party frameworks for these languages to simplify and speed up development,
+including the ability to write HTML/CSS/JS for stand-alone desktop applications.
+They can also be used to create a front-end for a web-server written in any of
+the other general-purpose languages listed here.
+
+\paragraph{Java}
+A very widely used, object-oriented first, language intended to be able to be
+run on any hardware that has a Java Virtual Machine (JVM). Java is both a
+compiled \textit{and} interpreted language, as source code is first compiled
+into an intermediary language that is then interpreted by the JVM at runtime.
+Despite this, Java is still highly performant.
+
+\paragraph{Python}
+A beginner friendly language supporting both functional and object-oriented
+programming paradigms. Python is an interpreted language, making it
+considerably slower than some of the other languages listed above. However, it
+still sees considerable use in the AI and Machine Learning industry. Python is
+also commonly used as a first language for teaching programming in secondary
+schools and universities. [King's College Source]
+\vspace{3.25ex}
+
+I decided against HTML/CSS/JS as I want my final solution to be a native
+application, for which one of the other languages would be a better fit. I
+also ruled out C++, as I would rather not put myself through the extra
+difficulty programming in it when the extra features offered are
+unnecessary for this project.
+
+Of the two remaining languages, both of them require an interpreter to be
+installed on the end user's system\footnote{\label{pyinstaller}Python
+\textit{can} be bundled with an interpreter into a single executable}.
+As mentioned earlier, Python is the most commonly used language for teaching in
+schools [King's College Source], so with this project positioned as a teaching
+aid, I can expect the vast majority of end users to already have a Python
+installation on their systems. Most distributions of macOS and Linux also come
+with an installation of Python included. Finally, between the two remaining
+languages, I have far more experience writing Python than I do Java. For these
+reasons I have chosen to use Python for this project.
+
+\subsection{GUI}
+\paragraph{PyQt6 (Qt)}
+\paragraph{Tkinter (Tcl/Tk)}
+\paragraph{wxPython}
+
+\subsection{Animations}
+\paragraph{pygame-ce}
+\paragraph{OpenGL}
+\paragraph{Manim Community}
 
 \chapter{Design}
 
-\section{Software Architecture}
+\section{Software Architecture} \label{software arch}
 
 \begin{landscape}
 
@@ -64,6 +133,10 @@ numbers.
 	\csvautotabular{tables/desirable_features.csv}
 
 \end{landscape}
+
+\section{Prototypes}
+\subsection{GUI Prototype}
+\subsection{Animation Prototype}
 
 \chapter{Project Plan}
 
