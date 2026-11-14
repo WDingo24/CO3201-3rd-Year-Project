@@ -8,6 +8,9 @@ __pycache__/
 *.aux
 *.log
 *.toc
+*.out
+*.blg
+*.bbl
 
 # MacOS file system artefact
 .DS_Store

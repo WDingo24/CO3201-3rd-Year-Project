@@ -5,6 +5,7 @@
 \usepackage{csvsimple}
 \usepackage{booktabs}
 \usepackage[none]{hyphenat}
+\usepackage[colorlinks=true,allcolors=black,urlcolor=blue]{hyperref}
 
 \title{Animating Digital Arithmetic}
 \author{Will Dargan}
@@ -88,7 +89,7 @@ programming paradigms. Python is an interpreted language, making it
 considerably slower than some of the other languages listed above. However, it
 still sees considerable use in the AI and Machine Learning industry. Python is
 also commonly used as a first language for teaching programming in secondary
-schools and universities. [King's College Source]
+schools \cite{hadwenbennett2024programming} and universities.
 \vspace{3.25ex}
 
 I decided against HTML/CSS/JS as I want my final solution to be a native
@@ -101,17 +102,39 @@ Of the two remaining languages, both of them require an interpreter to be
 installed on the end user's system\footnote{\label{pyinstaller}Python
 \textit{can} be bundled with an interpreter into a single executable}.
 As mentioned earlier, Python is the most commonly used language for teaching in
-schools [King's College Source], so with this project positioned as a teaching
-aid, I can expect the vast majority of end users to already have a Python
-installation on their systems. Most distributions of macOS and Linux also come
-with an installation of Python included. Finally, between the two remaining
-languages, I have far more experience writing Python than I do Java. For these
-reasons I have chosen to use Python for this project.
+schools \cite{hadwenbennett2024programming}, so with this project positioned as
+a teaching aid, I can expect the vast majority of end users to already have a
+Python installation on their systems. Most distributions of macOS and Linux
+also come with an installation of Python included. Finally, between the two
+remaining languages, I have far more experience writing Python than I do Java.
+For these reasons I have chosen to use Python for this project.
 
 \subsection{GUI}
-\paragraph{PyQt6 (Qt)}
+There are many GUI libraries on offer for Python, each one with it's own
+specialities and capabilities. Below are three of the most common libraries
+for writing native desktop GUI applications, all of which are widget toolkits:
+
+\paragraph{PySide6/PyQt6 (Qt)}
+These are two separate but very similar libraries containing Python bindings
+for the Qt framework, which supports Windows, macOS and Linux, as well as
+Android for mobile. Qt is a powerful framework that can be used to create
+native-looking GUIs as well as 3D UI elements \& graphics and graphs. Qt also
+offers direct integration with databases via SQL.
+
 \paragraph{Tkinter (Tcl/Tk)}
+Tkinter is a module in the Python standard library that provides bindings for
+the Tcl/Tk GUI framework. Tk supports Windows, macOS and Linux with
+native-looking GUI applications.
+
 \paragraph{wxPython}
+\
+\vspace{3.25ex}
+
+While researching Python GUI libraries I came across two other libraries which
+were unsuitable for this project, but are notable nonetheless: Kivy, which is a
+mobile first framework for writing multi-touch capable applications; and
+PyGObject, which is a native GUI library specifically for GNOME based Linux
+desktop environments.
 
 \subsection{Animations}
 \paragraph{pygame-ce}
@@ -139,5 +162,8 @@ reasons I have chosen to use Python for this project.
 \subsection{Animation Prototype}
 
 \chapter{Project Plan}
+
+\bibliographystyle{IEEEtran}
+\bibliography{interim}
 
 \end{document}
