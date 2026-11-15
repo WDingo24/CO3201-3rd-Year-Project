@@ -6,11 +6,12 @@
 \usepackage{booktabs}
 \usepackage[none]{hyphenat}
 \usepackage[colorlinks=true,allcolors=black,urlcolor=blue]{hyperref}
+\usepackage{minted}
 
 \title{Animating Digital Arithmetic}
 \author{Will Dargan}
 
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{3}
 
 \begin{document}
 
@@ -58,7 +59,7 @@ the following paragraphs do not contain a dedicated section for it.
 However, there is a section on the choice of programming language, so this
 component will be considered there.
 
-\subsection{Language}
+\subsection{Programming Language}
 There are a small few languages that I have some experience with and that would
 be suitable for a large scale project. Each of them is listed below with a
 brief description of their characteristics:
@@ -100,7 +101,7 @@ unnecessary for this project.
 
 Of the two remaining languages, both of them require an interpreter to be
 installed on the end user's system\footnote{\label{pyinstaller}Python
-\textit{can} be bundled with an interpreter into a single executable}.
+\textit{can} be bundled with an interpreter into a single executable.}.
 As mentioned earlier, Python is the most commonly used language for teaching in
 schools \cite{hadwenbennett2024programming}, so with this project positioned as
 a teaching aid, I can expect the vast majority of end users to already have a
@@ -117,17 +118,24 @@ for writing native desktop GUI applications, all of which are widget toolkits:
 \paragraph{PySide6/PyQt6 (Qt)}
 These are two separate but very similar libraries containing Python bindings
 for the Qt framework, which supports Windows, macOS and Linux, as well as
-Android for mobile. Qt is a powerful framework that can be used to create
+Android for mobile. Qt is a flexible framework that can be used to create
 native-looking GUIs as well as 3D UI elements \& graphics and graphs. Qt also
 offers direct integration with databases via SQL.
 
 \paragraph{Tkinter (Tcl/Tk)}
-Tkinter is a module in the Python standard library that provides bindings for
-the Tcl/Tk GUI framework. Tk supports Windows, macOS and Linux with
-native-looking GUI applications.
+A module in the Python standard library that provides bindings for the Tcl/Tk
+GUI framework. Tk supports Windows, macOS and Linux with native-looking GUI
+applications. Widgets may be styled with `themed Tk' introduced in Tk 8.5, the
+Python bindings for which are supplied in the \mintinline{python}{tkinter.ttk}
+submodule.
 
 \paragraph{wxPython}
-\
+A library for creating truly native cross-platform GUI applications with
+support for Windows, macOS and Linux. wxPython wraps platform specific widgets
+in platform agnostic bindings so that the same code may generate truly native
+applications for any operating system. This gives rise to some quirks and differences
+between platforms, where some options are unsupported. For example, macOS
+buttons may not be resized vertically.
 \vspace{3.25ex}
 
 While researching Python GUI libraries I came across two other libraries which
@@ -135,11 +143,18 @@ were unsuitable for this project, but are notable nonetheless: Kivy, which is a
 mobile first framework for writing multi-touch capable applications; and
 PyGObject, which is a native GUI library specifically for GNOME based Linux
 desktop environments.
+\vspace{3.25ex}
+
+I decided not to go with wxPython as the OS specific differences would make it
+difficult to develop an application that has a consistent appearance across all
+platforms. Both of the remaining frameworks are capable enough for my needs in
+this project. My decision was therefore based on the library that I have more
+experience with, which in this case is Tkinter.
 
 \subsection{Animations}
-\paragraph{pygame-ce}
-\paragraph{OpenGL}
 \paragraph{Manim Community}
+\paragraph{OpenGL}
+\paragraph{pygame-ce}
 
 \chapter{Design}
 
@@ -165,5 +180,11 @@ desktop environments.
 
 \bibliographystyle{IEEEtran}
 \bibliography{interim}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\appendix
+\chapter{Prototype Source Code}
+\section{GUI Prototype}
+\section{Animation Prototype}
 
 \end{document}

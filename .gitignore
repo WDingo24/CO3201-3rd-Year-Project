@@ -11,6 +11,7 @@ __pycache__/
 *.out
 *.blg
 *.bbl
+_minted/
 
 # MacOS file system artefact
 .DS_Store
