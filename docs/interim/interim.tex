@@ -8,6 +8,7 @@
 \usepackage[colorlinks=true,allcolors=black,urlcolor=blue]{hyperref}
 \usepackage{minted}
 \usepackage{pgf-umlcd}
+\usepackage{dirtreex}
 
 \renewcommand{\umlfillcolor}{lightgray}
 \renewcommand{\umldrawcolor}{black}
@@ -217,7 +218,7 @@ animation component of this project.
 As mentioned briefly in Section \ref{tech_stack}, the final solution will be
 broken down into three components: a GUI; a component for generating scipts for
 the renderer; and a component for rendering out those scripts to video. This
-section will describe the architecture of each of these components in turn.
+section describes the architecture of each of these components in turn.
 
 \subsection{GUI}
 The GUI will act as a nexus from which the other two components may be
@@ -274,6 +275,27 @@ menubar that displays at the top of the window, independent of the changing
 state of the main content. From this menubar, the user will be able to access
 options like saving and loading projects, and accessing configuration settings
 and information.
+
+\begin{figure}[h!]
+	\begin{dirtreex}[elbow radius=0.25\baselineskip]
+		\dir{src}{}{
+			\dir{states}{}{
+				\file{\_\_init\_\_.py}{}
+				\file{complex.py}{}
+				\file{menu.py}{}
+				\file{simple.py}{}
+			}
+			\dir{widgets}{}{
+				\file{\_\_init\_\_.py}{}
+			}
+			\file{\_\_init\_\_.py}{}
+			\file{\_\_main\_\_.py}{entry point}
+			\file{window.py}{}
+		}
+	\end{dirtreex}
+	\caption{Representative file structure of the final solution.}
+	\label{fig:file_structure}
+\end{figure}
 
 \subsubsection{States}
 \subsection{Script Generator}
