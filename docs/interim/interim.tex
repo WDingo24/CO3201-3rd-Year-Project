@@ -7,6 +7,10 @@
 \usepackage[none]{hyphenat}
 \usepackage[colorlinks=true,allcolors=black,urlcolor=blue]{hyperref}
 \usepackage{minted}
+\usepackage{pgf-umlcd}
+
+\renewcommand{\umlfillcolor}{lightgray}
+\renewcommand{\umldrawcolor}{black}
 
 \title{Animating Digital Arithmetic}
 \author{Will Dargan}
@@ -20,7 +24,27 @@
 \pagenumbering{roman}
 \setcounter{page}{2}
 
-\ \newpage
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+All sentences or passages quoted in this report, or computer code of any form
+whatsoever used and/or submitted at any stages, which are taken from other
+people's work have been specifically acknowledged by clear citation of the
+source, specifying author, work, date and page(s). 
+\vspace{3.25ex}
+
+\noindent Any part of my own written work, or software coding, which is
+substantially based upon other people's work or generative artificial
+intelligence, is duly accompanied by clear citation of the source, using an
+appropriate referencing system in accordance with guidance provided. I
+understand that failure to do this amounts to academic misconduct and will be
+considered grounds for failure in this module and the degree examination as a
+whole.
+
+\paragraph{Name:}
+William Michael Dargan
+
+\paragraph{Signed:}
+\texttt{William Michael Dargan}
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
@@ -35,12 +59,12 @@
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
-This project revolves around an application that enables the user to dynamically
-generate educational animations of simple arithmetic and bitwise logic on binary
-numbers.
 
 \section*{Aims}
 \addcontentsline{toc}{section}{Aims}
+This project encompasses the research, design and implementation of a
+software solution for a teaching tool for arithmetic and bitwise logic on
+binary numbers.
 
 \section*{Objectives}
 \addcontentsline{toc}{section}{Objectives}
@@ -49,15 +73,14 @@ numbers.
 
 \section{Underpinning Theory}
 
-\section{Technology Stack}
+\section{Technology Stack} \label{tech_stack}
 As will be outlined and explained in much more depth in Section
-\ref{software arch}, the final solution will be broken down into three major
-components: a GUI; a component for generating scripts that animations may be
-generated from; and finally a component for generating the animations
-themselves. As the second component is largely language and framework agnostic,
-the following paragraphs do not contain a dedicated section for it.
-However, there is a section on the choice of programming language, so this
-component will be considered there.
+\ref{software_arch}, the final solution will be broken down into three major
+components: a GUI; a script generator; and a component for rendering the
+animations from scripts. As the second component is largely language and
+framework agnostic, the following paragraphs do not contain a dedicated section
+for it. However, there is a section on the choice of programming language, so
+this component will be considered there.
 
 \subsection{Programming Language}
 There are a small few languages that I have some experience with and that would
@@ -190,7 +213,71 @@ animation component of this project.
 
 \chapter{Design}
 
-\section{Software Architecture} \label{software arch}
+\section{Software Architecture} \label{software_arch}
+As mentioned briefly in Section \ref{tech_stack}, the final solution will be
+broken down into three components: a GUI; a component for generating scipts for
+the renderer; and a component for rendering out those scripts to video. This
+section will describe the architecture of each of these components in turn.
+
+\subsection{GUI}
+The GUI will act as a nexus from which the other two components may be
+controlled and executed by the user. As such, the GUI will be the most complex
+component of the system, having to account for all of the various options and
+command line arguments involved with the other two components.
+
+The architecture of the GUI is based on the state design pattern, whereby the
+progression of the user between different states of the GUI mimics a
+finite-state machine. I had originally wanted to express the current state as
+the element at the top of a stack belonging to the main window class, however
+I later realised that that would have restricted the transitions that I would
+have been able to make between different states in the machine. In an abstract
+sense, the state machine would have been restricted to a tree structure rather
+than a graph.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\begin{class}[font=\ttfamily, text width=9cm]{Window}{0,0}
+			\attribute{+ currentState: states.State}
+			\attribute{- menubar: tkinter.Menu}
+
+			\operation{- \_\_init\_\_(cnf: dict=\{\}, **kwargs) -> None}
+			\operation{+ changeState(newState: states.State) -> None}
+		\end{class}
+
+		\umlnote[font=\ttfamily, text width=6cm] (note)at (0,-3)
+		{\textit{\#Actual inheritance of Window}
+		\newline class Window(tkinter.Tk): ...};
+
+		\draw[umlcd style dashed line,<-] (Window.south) -- (note);
+	\end{tikzpicture}
+	\caption{Class diagram for the main window.}
+	\label{fig:Window_class}
+\end{figure}
+
+Figure \ref{fig:Window_class} above describes the main \texttt{Window} class,
+which defines the container window for the main GUI. The \texttt{Window} class
+contains the \texttt{currentState} attribute, which stores the currently active
+GUI state being displayed to the user. The \texttt{changeState} method can be
+used to change the currently active state; it takes the new state as a parameter
+so that the exact implementation of the transition is arbitrary. The
+\texttt{changeState} method is public so that it may be called from outside of
+the main \texttt{Window} class, as is necessary for the states themselves to
+transition from one to another, as well as for the initial state to be set by
+the main program thread.
+
+The main window will spawn multiple \texttt{TopLevel} windows for configuration
+options and other dialogs, however these aren't directly contained by the main
+window, so aren't featured in Figure \ref{fig:Window_class}. The
+\texttt{menubar} attribute of the \texttt{Window} class contains a persistent
+menubar that displays at the top of the window, independent of the changing
+state of the main content. From this menubar, the user will be able to access
+options like saving and loading projects, and accessing configuration settings
+and information.
+
+\subsubsection{States}
+\subsection{Script Generator}
+\subsection{Animation Renderer}
 
 \begin{landscape}
 
