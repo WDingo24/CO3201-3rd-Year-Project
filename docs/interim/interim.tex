@@ -45,7 +45,7 @@ whole.
 William Michael Dargan
 
 \paragraph{Signed:}
-\texttt{William Michael Dargan}
+\texttt{WDargan}
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
@@ -226,14 +226,14 @@ controlled and executed by the user. As such, the GUI will be the most complex
 component of the system, having to account for all of the various options and
 command line arguments involved with the other two components.
 
-The architecture of the GUI is based on the state design pattern, whereby the
-progression of the user between different states of the GUI mimics a
-finite-state machine. I had originally wanted to express the current state as
-the element at the top of a stack belonging to the main window class, however
-I later realised that that would have restricted the transitions that I would
-have been able to make between different states in the machine. In an abstract
-sense, the state machine would have been restricted to a tree structure rather
-than a graph.
+The architecture of the GUI is based on the state design pattern
+\cite[p.~305]{alma991001089899702746}, whereby the progression of the user
+between different states of the GUI mimics a finite-state machine. I had
+originally wanted to express the current state as the element at the top of a
+stack belonging to the main window class, however I later realised that that
+would have restricted the transitions that I would have been able to make
+between different states in the machine. In an abstract sense, the state
+machine would have been restricted to a tree structure rather than a graph.
 
 \begin{figure}[h!]
 	\centering
@@ -257,11 +257,12 @@ than a graph.
 \end{figure}
 
 Figure \ref{fig:Window_class} above describes the main \texttt{Window} class,
-which defines the container window for the main GUI. The \texttt{Window} class
-contains the \texttt{currentState} attribute, which stores the currently active
-GUI state being displayed to the user. The \texttt{changeState} method can be
-used to change the currently active state; it takes the new state as a parameter
-so that the exact implementation of the transition is arbitrary. The
+which acts as the ``context'' \cite[pp.~306--307]{alma991001089899702746} in
+the state design pattern. The \texttt{Window} class contains the
+\texttt{currentState} attribute, which stores the currently active GUI state
+being displayed to the user. The \texttt{changeState} method can be used to
+change the currently active state; it takes the new state as a parameter so
+that the exact implementation of the transition is arbitrary. The
 \texttt{changeState} method is public so that it may be called from outside of
 the main \texttt{Window} class, as is necessary for the states themselves to
 transition from one to another, as well as for the initial state to be set by
@@ -279,21 +280,27 @@ and information.
 \begin{figure}[h!]
 	\begin{dirtreex}[elbow radius=0.25\baselineskip]
 		\dir{src}{}{
-			\dir{menubar}{menubar options}{}
-			\dir{states}{}{
+			\dir{menubar}{menubar options}{
+				\file{\_\_init\_\_.py}{}
+				\file{help.py}{}
+				\file{\ldots}{}
+			}
+			\dir{states}{GUI states}{
 				\file{\_\_init\_\_.py}{}
 				\file{complex.py}{}
 				\file{menu.py}{}
 				\file{simple.py}{}
 			}
-			\dir{widgets}{}{
+			\dir{widgets}{custom widgets}{
 				\file{\_\_init\_\_.py}{}
+				\file{\ldots}{}
 			}
 			\file{\_\_init\_\_.py}{}
 			\file{\_\_main\_\_.py}{entry point}
 			\file{generator.py}{}
 			\file{renderer.py}{final output}
 			\file{window.py}{}
+			\file{\ldots}{}
 		}
 	\end{dirtreex}
 	\caption{Representative file structure of the final solution.}
@@ -301,6 +308,7 @@ and information.
 \end{figure}
 
 \subsubsection{States}
+\subsubsection{Menubar Options}
 \subsection{Script Generator}
 \subsection{Animation Renderer}
 
