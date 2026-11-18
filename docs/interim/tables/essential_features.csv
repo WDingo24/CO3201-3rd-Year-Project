@@ -1,12 +1,26 @@
 ID,Name,Description
-E-ANM01-F,Animating Addition,The system must generate animations of addition in binary.
-E-ANM02-F,Animating Subtraction,The system must generate animations of subtraction in binary.
-E-ANM03-F,Animating Multiplication,The system must generate animations of multiplication in binary.
-E-ANM04-F,Animating Division,The system must generate animations of division in binary.
+E-ANM01-F,Animating Addition,The system must be able to generate animations of addition in binary.
+E-ANM10-F,Written Addition,The system must be able to generation animations of the long addition method with carries.
+E-ANM02-F,Animating Subtraction,The system must be able to generate animations of subtraction in binary.
+E-ANM08-F,Written Subtraction,The system must be able to generate animations of the long subtraction method with carries.
+E-ANM09-F,Computed Subtraction,The system must be able to generate animations of the two's compliment method of subtraction.
+E-ANM03-F,Animating Multiplication,The system must be able to generate animations of multiplication in binary.
+E-ANM04-F,Animating Division,The system must be able to generate animations of division in binary.
+E-ANM11-F,Animating Bitwise AND,The system must be able to generate animations of bitwise AND operations.
+E-ANM12-F,Animating Bitwise OR,The system must be able to generate animations of bitwise OR operations.
+E-ANM13-F,Animating Bitwise NOT,The system must be able to generate animations of bitwise NOT operations.
+E-ANM14-F,Animating Bitwise XOR,The system must be able to generate animations of bitwise XOR operations.
+E-ANM15-F,Animating Bitwise SHIFT,The system must be able to generate animations of left and right bit shift operations.
 E-ANM06-F,Arithmetic Inputs,The system must allow the operands to be input by the user.
 E-ANM05-F,Minimum Binary Precision,The system must allow for operands of at least 8-bits.
 E-ANM07-N,Output Usability,The system must generate standalone video files as output.
 E-GUI01-F,GUI Inclusion,The system must include a GUI.
-E-ANM08-F,Written Subtraction,The system must generate animations of the long subtraction method with carries.
-E-ANM09-F,Computed Subtraction,The system must generate animations of the two's compliment method of subtraction.
-E-ANM10-F,Written Addition,The system must generation animations of the long addition method with carries.
+E-GUI05-F,Simple State,The system must include a GUI state for configuring single operation animations.
+E-GUI08-F,Menubar,The system must include a persistent menubar at the top of the main window for persistent options.
+E-GUI11-F,File Menu,The menubar must include a File section to contain options for closing parts of the window.
+E-GUI12-F,Close Animation Config,The File section of the menubar must include an option to close the current animation configuration state.
+E-GUI13-F,Close Window,The File section of the menubar must include an option to close the entire program.
+E-GUI14-F,Config Menu,The menubar must include a Config section to contain options for configuring the program itself.
+E-GUI15-F,Manim Config,The Config section of the menubar must include an option to open a window for modifying the Manim configuration.
+E-GUI16-F,Help Menu,The menubar must include a Help section to contain options for help and information on the program.
+E-GUI17-F,Licenses,The Help section of the menubar must include an option to view the licenses of the program itself and all libraries used by the program.
