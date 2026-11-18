@@ -124,7 +124,7 @@ difficulty programming in it when the extra features offered are
 unnecessary for this project.
 
 Of the two remaining languages, both of them require an interpreter to be
-installed on the end user's system\footnote{\label{pyinstaller}Python
+installed on the end user's system\footnote{\label{foot:pyinstaller}Python
 \textit{can} be bundled with an interpreter into a single executable.}.
 As mentioned earlier, Python is the most commonly used language for teaching in
 schools \cite{hadwenbennett2024programming}, so with this project positioned as
@@ -132,7 +132,9 @@ a teaching aid, I can expect the vast majority of end users to already have a
 Python installation on their systems. Most distributions of macOS and Linux
 also come with an installation of Python included. Finally, between the two
 remaining languages, I have far more experience writing Python than I do Java.
-For these reasons I have chosen to use Python for this project.
+For these reasons I have chosen to use Python for this project. As of November
+2026, the latest version of Python out of the bugfix period is version 3.13 so
+that is the version I will be using.
 
 \subsection{GUI}
 There are many GUI libraries on offer for Python, each one with it's own
@@ -237,18 +239,18 @@ machine would have been restricted to a tree structure rather than a graph.
 
 \begin{figure}[h!]
 	\centering
-	\begin{tikzpicture}
-		\begin{class}[font=\ttfamily, text width=9cm]{Window}{0,0}
+	\begin{tikzpicture}[font=\ttfamily]
+		\begin{class}[text width=9cm]{Window}{0,0}
 			\attribute{+ currentState: states.State}
 			\attribute{- menubar: tkinter.Menu}
 
-			\operation{- \_\_init\_\_(cnf: dict=\{\}, **kwargs) -> None}
+			\operation{+ \_\_init\_\_(cnf: dict=\{\}, **kwargs) -> None}
 			\operation{+ changeState(newState: states.State) -> None}
 		\end{class}
 
-		\umlnote[font=\ttfamily, text width=6cm] (note)at (0,-3)
+		\umlnote[text width=6cm] (note)at (0,-3)
 		{\textit{\#Actual inheritance of Window}
-		\newline class Window(tkinter.Tk): ...};
+		\newline class Window(tkinter.Tk): \ldots};
 
 		\draw[umlcd style dashed line,<-] (Window.south) -- (note);
 	\end{tikzpicture}
@@ -307,8 +309,158 @@ and information.
 	\label{fig:file_structure}
 \end{figure}
 
+The file structure of the source code for the final solution follows Python's
+package structure, a representative sample\footnote{\label{foot:sample_files}%
+Some of the files and/or directories shown in Figure \ref{fig:file_structure}
+may not exist in the completed application. At the same time, there may be
+some files in the completed application that aren't shown here.} of what this
+may look like is shown above in Figure \ref{fig:file_structure}. This means the
+entry point for the application is the \texttt{\_\_main\_\_.py} file and to
+execute the application, the \texttt{src/} directory must be run as a module.
+
+The package structure enables reusable code practices much better than
+traditional modules as it supports the use of relative imports within source
+files, allowing imports from further up the file tree than just the current
+subpackage. As such, the topmost \texttt{\_\_init\_\_.py} file may be used to
+store global variables that may be accessed by the entire application. It is
+here that the root \texttt{Window}, or context, of the state design pattern is
+stored, so that all of the states are able to access it's \texttt{changeState}
+public method.
+
 \subsubsection{States}
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[font=\ttfamily]
+		\begin{interface}{State}{-3,0}
+			\attribute{\# frame: ttk.Frame}
+
+			\operation{+ \_\_init\_\_() -> None}
+			\operation{+ updateMenubar() -> None}
+		\end{interface}
+
+		\begin{class}{Complex}{3,-3}
+			\implement{State}
+
+			\attribute{\# frame: ttk.Frame}
+
+			\operation{+ \_\_init\_\_() -> None}
+			\operation{+ updateMenubar() -> None}
+			\operation{- generateScript() -> None}
+			\operation{- render() -> None}
+		\end{class}
+
+		\begin{class}{Menu}{3,0}
+			\implement{State}
+
+			\attribute{\# frame: ttk.Frame}
+
+			\operation{+ \_\_init\_\_() -> None}
+			\operation{+ updateMenubar() -> None}
+		\end{class}
+
+		\begin{class}{Simple}{-3,-3}
+			\implement{State}
+
+			\attribute{\# frame: ttk.Frame}
+
+			\operation{+ \_\_init\_\_() -> None}
+			\operation{+ updateMenubar() -> None}
+			\operation{- generateScript() -> None}
+			\operation{- render() -> None}
+		\end{class}
+	\end{tikzpicture}
+	\caption{Class diagram covering the GUI states.}
+	\label{fig:State_classes}
+\end{figure}
+
+All of the GUI states implement the \texttt{State} interface\footnote{%
+\label{foot:interface}Python doesn't support explicit interfaces, so
+\texttt{State} is actually an abstract base class from which all of the other
+states inherit. This is still enforced at runtime, even if not a true
+interface.} that dictates a small number of attributes and methods that all
+states are required to implement, this is shown in Figure
+\ref{fig:State_classes} above. The vast majority of the differing behaviours of
+each state will be described in the state's constructor, as that is where the
+initial widgets for that state will be created and placed in the window.
+
+The \texttt{Menu} state is very basic and implements no new attributes or
+methods on top of the \texttt{State} interface. The only purpose this state
+serves is to allow the user to choose between simple and complex animation
+types and transition the program to those states respectively.
+
+The \texttt{Simple} and \texttt{Complex} states appear very similar in Figure
+\ref{fig:State_classes}, however their behaviours do differ significantly.
+Both states are intended to allow the user to save configurations and load
+previously created configurations to be edited again. \texttt{Simple} is
+intended to allow the user to configure and generate an animation of a single
+operation and export it to video. \texttt{Complex}, on the other hand, is
+intended to allow the user to chain together multiple independently configured
+operations into one animation and export that to video. \texttt{Complex} will
+also allow the user to edit the script generated by the program before it is
+used to generate the final animation. In general, \texttt{Complex} is intended
+to be a much more advanced tool than \texttt{Simple}, offering the user much
+more direct control over the generator.
+
 \subsubsection{Menubar Options}
+The vast majority of the extra \texttt{TopLevel} windows spawned by options in
+the menubar should only allow one instance of them to be open at a time. This
+is especially useful for configuration windows, where there should only be one
+copy attempting to modify configuration files at any one time to avoid
+corruption or the illusion that changes are being saved when they aren't. There
+are a couple of options as to how this may be implemented:
+
+\begin{itemize}
+	\item The \texttt{TopLevel} windows could be singletons that are simply
+	shown and hidden as necessary.
+
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}[font=\ttfamily]
+			\begin{class}{Singleton}{0,0}
+				\attribute{- \underline{instance}: Singleton}
+
+				\operation{+ \_\_init\_\_() -> None}
+				\operation{- \underline{instance()} -> Singleton}
+			\end{class}
+		\end{tikzpicture}
+		\caption{Bare bones example of a singleton.}
+		\label{fig:singleton}
+	\end{figure}
+
+	There are a few methods for implementing singletons, the main difference being
+	whether the singleton is instantiated at runtime or when it is first called.
+	Regardless of the method used, they usually follow the structure shown in
+	Figure \ref{fig:singleton} above. They are usually implemented with a class
+	variable to store the singular instance of the class and a class method for
+	retrieving that instance.
+
+	\item The \texttt{TopLevel} windows could be traditional classes that are
+	appended to a list of open windows when instantiated. If the user attempts
+	to open another instance of the same window, the list can be checked for an
+	existing instance and focus it if it exists.
+
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}[font=\ttfamily]
+			\begin{class}[text width=9cm]{Window}{0,0}
+				\attribute{+ currentState: states.State}
+				\attribute{- menubar: tkinter.Menu}
+				\attribute{- topLevels: list[tk.TopLevel]}
+
+				\operation{+ \_\_init\_\_(cnf: dict=\{\}, **kwargs) -> None}
+				\operation{+ changeState(newState: states.State) -> None}
+			\end{class}
+		\end{tikzpicture}
+		\caption{Class diagram for the main window with list of
+		\texttt{TopLevel} windows.}
+		\label{fig:modified_Window_class}
+	\end{figure}
+
+	The list of \texttt{TopLevel} windows could be added to the root
+	\texttt{Window} as an attribute so that it may be easily accessed by the
+	menubar.
+\end{itemize}
+
 \subsection{Script Generator}
 \subsection{Animation Renderer}
 
