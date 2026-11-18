@@ -461,7 +461,27 @@ are a couple of options as to how this may be implemented:
 	menubar.
 \end{itemize}
 
+\noindent\hrulefill
+\vspace{3.25ex}
+
+\noindent The next two components are significantly less complex than the GUI.
+They will largely consist of a few functions and procedures for handling the
+main program logic.
+
 \subsection{Script Generator}
+Manim uses Python scripts to generate animations: these scripts are usually
+intended to be written by hand by the programmer/user of the library. This
+component of the final solution abstracts away that script creation from the
+user. It will use a number of pre-written templates that may be stitched
+together to form a complete animation. Part of the use of these templates
+involves substituting in data values for the operands in the operations. For a
+\texttt{Complex} type animation this could involve some amount of preprocessing
+as the result of one operation may be fed as the operand for the next. This
+component will ultimately generate a Python source file that can be rendered by
+Manim. The unobfuscated output format of this component should mean that a
+sufficiently savvy user could easily edit the output file for themselves should
+they so desire.
+
 \subsection{Animation Renderer}
 
 \begin{landscape}
