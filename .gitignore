@@ -1,4 +1,5 @@
 structs
+*.txt
 
 # Optimized python files
 __pycache__/
@@ -11,6 +12,7 @@ __pycache__/
 *.out
 *.blg
 *.bbl
+*.synctex.gz
 _minted/
 
 # MacOS file system artefact
