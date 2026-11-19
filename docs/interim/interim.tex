@@ -596,7 +596,7 @@ states. In this case the underlying implementation does not affect the
 behaviour of the application as it is incomplete. It is still worth mentioning
 this difference as the source code quoted in Appendix \ref{proto_source} for
 the \texttt{Stack} definition is an excerpt from a module I wrote myself before
-the start of this project that can be found on my GitHub at:
+the start of this project. This can be found on my GitHub at:
 \url{https://github.com/WDingo24/structs}.}; it also contains a dropdown menu
 as part of a \texttt{LabelFrame} in which the rest of the content will be
 rendered. The dropdown has options for addition, subtraction, multiplication
@@ -651,6 +651,61 @@ Figure \ref{fig:generation}, the two operands are stored in the output file as
 of the dropdown option is stored too.
 
 \chapter{Project Plan}
+For the remaining duration of this project I am going to be implementing the
+agile software development methodology to give myself smaller deadlines for
+smaller components of the project to ensure those components are completed in a
+timely manner. Breaking up the project like this will help me keep a
+maintainable pace throughout so that the final solution and dissertation can be
+delivered on-time. To support the agile methodology I will be employing a
+couple of project management tools: Kanban boards, to quantitatively keep track
+of my progress and completion of requirements and Milestones, larger objectives
+with definite deadlines that I can work towards one after the other.
+
+\section{Kanban Boards}
+Kanban boards offer a very visual method for decomposing a project into it's
+component parts. Each small task gets it's own card that is sorted into one of
+a number of customisable columns based on the current status of the task.
+A common simple layout of a Kanban board includes the column headings: To Do,
+In Progress, and Done. GitLab includes a feature called ``Issue Boards'', which
+is their implementation of Kanban boards that has integration with repository
+Issues. I will be making use of this feature in my project repository to create
+and manage my own Kanban board for this project. As I have already defined a
+list of functional requirements, I can very simply use those as my tasks and
+create a task on the Kanban board for each of them. The tasks on the Kanban
+board can also be categorised by which milestone they contribute to so I can
+also keep track of my progress towards each milestone as well as the overall
+project.
+
+\section{Milestones}
+To help myself avoid delaying work on this project until I don't have enough
+time left to complete it, I have set a number of milestones with their own
+deadlines to break up the overall project into more manageable chunks. As
+mentioned previously each milestone will have a number of functional
+requirements that belong to it so that milestone progress can be tracked on the
+Kanban board. The milestones I have created so far are as follows:
+
+\begin{itemize}
+	\item Dec. 11, 2026 -- Completed GUI for \texttt{Simple} type animations
+	and basic options on the menubar like help and config windows. Completed
+	animation pipelines for addition and subtraction operations.
+	\item Jan. 3, 2027 -- Completed animation pipelines for remaining
+	operations: multiplication, division, and bitwise operations.
+	\item Feb. 7, 2027 -- Completed GUI for \texttt{Complex} type animations so
+	that it may be included in the interview occuring between Feb. 8--19, 2027.
+	\item Feb. 28, 2027 -- Completed animation pipeline for \texttt{Complex}
+	type animations.
+	\item Mar. 31, 2027 -- Completed Technical System early to allow for bug
+	fixes and preparation for Mini Viva.
+	\item Apr. 16, 2027 -- Completed Dissertation early to allow time to make
+	updates and changes if necessary. The dissertation will be worked on
+	throughout the rest of the project.
+	\item Apr. 16, 2027 -- Completed presentation for Mini Viva to allow time
+	to rehearse and practise.
+\end{itemize}
+
+Time allowing towards the end of the project, I'd like to explore the teaching
+aspect of the project more as well as the potential inclusion of challenging
+floating point arithmetic.
 
 \bibliographystyle{IEEEtran}
 \bibliography{interim}
