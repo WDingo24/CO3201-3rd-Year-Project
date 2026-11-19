@@ -4,6 +4,7 @@
 \usepackage{pdflscape}
 \usepackage{csvsimple}
 \usepackage[none]{hyphenat}
+\usepackage{url}
 \usepackage[colorlinks=true,allcolors=black,urlcolor=blue]{hyperref}
 \usepackage{minted}
 \usepackage{pgf-umlcd}
@@ -13,6 +14,10 @@
 \usepackage{tabularx}
 \usepackage{ltablex}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\urlstyle{same}
 
 \setminted{linenos,frame=single,style=trac,breaklines}
 
@@ -559,6 +564,91 @@ configuration that will be modifiable by the user from within the application.
 \end{landscape}
 
 \section{Prototype}
+As part of this report I developed a prototype of the GUI for generating
+\texttt{Simple} type animations. This prototype only includes the interface for
+addition as the primary purpose is to demonstrate the implementation of the
+underlying architecture. Despite this, the prototype does include \textit{some}
+functionality, showing that the data input into the GUI fields can be easily
+collected to be used in later components.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 03.48.36.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 03.48.55.png}
+	\end{subfigure}
+	\caption{Main \texttt{Menu} and subsequent \texttt{Simple} states.}
+	\label{fig:rendered_states}
+\end{figure}
+
+Figure \ref{fig:rendered_states} above shows the main \texttt{Menu} state that
+is the default state when opening the application. It offers two buttons to
+transition to the \texttt{Simple} and \texttt{Complex} states respectively. The
+Complex button is disabled as that state is not implemented in this prototype.
+The \texttt{Simple} state offers a button to transition back to the main
+\texttt{Menu} state\footnote{\label{foot:stack}This prototype was developed
+before I deprecated the stack method for containing and transitioning between
+states. In this case the underlying implementation does not affect the
+behaviour of the application as it is incomplete. It is still worth mentioning
+this difference as the source code quoted in Appendix \ref{proto_source} for
+the \texttt{Stack} definition is an excerpt from a module I wrote myself before
+the start of this project that can be found on my GitHub at:
+\url{https://github.com/WDingo24/structs}.}; it also contains a dropdown menu
+as part of a \texttt{LabelFrame} in which the rest of the content will be
+rendered. The dropdown has options for addition, subtraction, multiplication
+and division, however only the addition option creates any content as that is
+the only option implemented for this prototype.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 03.49.34.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 04.41.17.png}
+	\end{subfigure}
+	\caption{Addition content and it's removal when another operation
+	selected.}
+	\label{fig:addition_fields}
+\end{figure}
+
+When selecting an option from the dropdown, the relevant configuration fields
+populate into the \texttt{LabelFrame}, as shown in Figure
+\ref{fig:addition_fields}. Selecting another operation removes the fields from
+the \texttt{LabelFrame} and would populate it with the relevant new fields if
+the other operations were implemented. The two operand fields are
+\texttt{Spinbox}es accepting an integer between 0 and 255, inclusive. The
+animation type dropdown has the options: Written, Hardware, and Both. These
+signify the on-paper representation of the operation, the actual hardware
+performing the operation, and both of them in one.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 03.49.57.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]
+		{images/Screenshot 2026-11-19 at 05.13.54.png}
+	\end{subfigure}
+	\caption{Entering data and outputting the input data.}
+	\label{fig:generation}
+\end{figure}
+
+Values can be entered into the configuration fields, in this case the number 10
+for operand one, the number 137 for operand two, and the second option in the
+dropdown, ``Hardware''. Then, interacting with the ``Generate'' button, the
+program will output the input data to a \texttt{.txt} file. As can be seen in
+Figure \ref{fig:generation}, the two operands are stored in the output file as
+8-bit binary representations of themselves, and the zero-indexed integer value
+of the dropdown option is stored too.
 
 \chapter{Project Plan}
 
@@ -568,6 +658,7 @@ configuration that will be modifiable by the user from within the application.
 
 \appendix
 \chapter{Prototype Source Code}
+\label{proto_source}
 \subsubsection*{\texttt{states/\_\_init\_\_.py}}
 \addcontentsline{toc}{section}{states/\_\_init\_\_.py}
 \inputminted{python}{../../prototype/states/__init__.py}

@@ -42,7 +42,7 @@ class AdditionCfgFrame(ttk.Frame):
 
     def __generate(self) -> None:
         with open("output.txt", "w") as file:
-            file.write(f"op1={self.__opEntry1.get()}\n")
-            file.write(f"op2={self.__opEntry2.get()}\n")
+            file.write(f"op1={int(self.__opEntry1.get()):08b}\n")
+            file.write(f"op2={int(self.__opEntry2.get()):08b}\n")
             file.write(f"animType={self.__animTypes.index(
                 self.__animTypeEntry.get())}")
