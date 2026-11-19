@@ -19,8 +19,9 @@
 \renewcommand{\umlfillcolor}{lightgray}
 \renewcommand{\umldrawcolor}{black}
 
-\title{Animating Digital Arithmetic}
-\author{Will Dargan}
+\title{CO3201 Computer Science Project\\ Animating Digital Arithmetic
+\\ Interim Report}
+\author{William Dargan\\ 249009872}
 
 \setcounter{tocdepth}{3}
 
@@ -55,6 +56,35 @@ William Michael Dargan
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+This document outlines the research, design, development and planning
+undertaken over the first two weeks of my third year computer science project.
+This project covers how computers perform arithmetic and basic logical
+operations, with a final aim to create an application capable of generating
+animations of those operations.
+\vspace{3.25ex}
+
+\noindent Key discussions and outcomes:
+\begin{itemize}
+	\item A review of the academic theory and real-world hardware
+	implementations that underpin the project as a whole opens this report to
+	provide a broad understanding of the concepts involved.
+	\item A selection of available technologies for the development of the
+	final solution is discussed. A number of different programming languages,
+	GUI libraries and graphics libraries are considered. The final tech stack
+	settled on consists of Python, Tkinter and Manim.
+	\item The high-level architecture of the final solution is described, with
+	lower level designs and more concrete descriptions of implementation for
+	the GUI component. High-level descriptions of the content of the other
+	components of the final solution are also included.
+	\item Itemised functional and non-functional requirements for the final
+	solution are also included for a more quantifiable outline of the design
+	and measure of progress/completeness.
+	\item An explanation of a prototype developed until this point supports the
+	design with implementations of several of the structures mentioned.
+	\item Finally, the plan for the continued development of this project is
+	outlined, including the use of the agile software development methodology
+	and project management tools, such as milestones and Kanban boards.
+\end{itemize}
 
 \newpage \ \newpage
 
@@ -79,6 +109,8 @@ binary numbers.
 \chapter{Literature Review}
 
 \section{Underpinning Theory}
+The majority of the research for this project revolved around the computing
+theory and real-world implementations \textit{of said theory}.
 
 \section{Technology Stack} \label{tech_stack}
 As will be outlined and explained in much more depth in Section
@@ -118,9 +150,10 @@ Despite this, Java is still highly performant.
 A beginner friendly language supporting both functional and object-oriented
 programming paradigms. Python is an interpreted language, making it
 considerably slower than some of the other languages listed above. However, it
-still sees considerable use in the AI and Machine Learning industry. Python is
-also commonly used as a first language for teaching programming in secondary
-schools \cite{hadwenbennett2024programming} and universities.
+still sees considerable use in the AI and Machine Learning industry
+\cite{octoverseinsights}. Python is also commonly used as a first language for
+teaching programming in secondary schools \cite{hadwenbennett2024programming}
+and universities.
 \vspace{3.25ex}
 
 I decided against HTML/CSS/JS as I want my final solution to be a native
@@ -152,7 +185,7 @@ These are two separate but very similar libraries containing Python bindings
 for the Qt framework, which supports Windows, macOS and Linux, as well as
 Android for mobile. Qt is a flexible framework that can be used to create
 native-looking GUIs as well as 3D UI elements \& graphics and graphs. Qt also
-offers direct integration with databases via SQL.
+offers direct integration with databases via SQL \cite{qtfeatures}.
 
 \paragraph{Tkinter (Tcl/Tk)}
 A module in the Python standard library that provides bindings for the Tcl/Tk
@@ -434,12 +467,13 @@ are a couple of options as to how this may be implemented:
 		\label{fig:singleton}
 	\end{figure}
 
-	There are a few methods for implementing singletons, the main difference being
-	whether the singleton is instantiated at runtime or when it is first called.
-	Regardless of the method used, they usually follow the structure shown in
-	Figure \ref{fig:singleton} above. They are usually implemented with a class
-	variable to store the singular instance of the class and a class method for
-	retrieving that instance.
+	There are a few methods for implementing singletons, the main difference
+	being whether the singleton is instantiated at runtime or when it is first
+	called. Regardless of the method used, they usually follow the structure
+	shown in Figure \ref{fig:singleton} above
+	\cite[pp.~127--128]{alma991001089899702746}. They are usually implemented
+	with a class variable to store the singular instance of the class and a
+	class method for retrieving that instance.
 
 	\item The \texttt{TopLevel} windows could be traditional classes that are
 	appended to a list of open windows when instantiated. If the user attempts
@@ -524,9 +558,7 @@ configuration that will be modifiable by the user from within the application.
 
 \end{landscape}
 
-\section{Prototypes}
-\subsection{GUI Prototype}
-\subsection{Animation Prototype}
+\section{Prototype}
 
 \chapter{Project Plan}
 
@@ -537,17 +569,17 @@ configuration that will be modifiable by the user from within the application.
 \appendix
 \chapter{Prototype Source Code}
 \subsubsection*{states/\_\_init\_\_.py}
-\inputminted{python}{../../prototypes/gui/states/__init__.py}
+\inputminted{python}{../../prototype/states/__init__.py}
 \subsubsection*{widgets/\_\_init\_\_.py}
-\inputminted{python}{../../prototypes/gui/widgets/__init__.py}
+\inputminted{python}{../../prototype/widgets/__init__.py}
 \subsubsection*{\_\_init\_\_.py}
-\inputminted{python}{../../prototypes/gui/__init__.py}
+\inputminted{python}{../../prototype/__init__.py}
 \subsubsection*{\_\_main\_\_.py}
-\inputminted{python}{../../prototypes/gui/__main__.py}
+\inputminted{python}{../../prototype/__main__.py}
 \newpage
 \subsubsection*{window.py}
-\inputminted{python}{../../prototypes/gui/window.py}
+\inputminted{python}{../../prototype/window.py}
 \subsubsection*{../structs/\_\_init\_\_.py}
-\inputminted[firstline=23, lastline=41]{python}{../../prototypes/structs/__init__.py}
+\inputminted[firstline=23, lastline=41]{python}{../../structs/__init__.py}
 
 \end{document}
