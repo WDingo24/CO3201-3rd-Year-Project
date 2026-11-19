@@ -3,6 +3,8 @@ D-GUI02-F,GUI Blocking,The generation of animations must not block execution of 
 D-GUI03-F,Progress Bar,The system should display a progress bar when generating animations.
 D-GUI04-F,Animation Preview,The system should offer the user the option to view a lower quality preview of the animation they are generating.
 D-GUI06-F,Complex State,The system must include a GUI state for configuring multi-operation animations.
+D-GUI18-F,Operation Breakdown,In the Complex state\, the system should break down complex operations into their component parts. e.g. Subtraction can be broken down into a negation and two additions.
+D-GUI20-F,Editable Scripts,The system should allow the user to edit Manim scripts after they have been generated but before the animation videos are generated.
 D-GUI09-F,Saving Animation Configs,The system should allow the user to save animation configurations to the disk.
 D-GUI10-F,Loading Animation Configs,The system should allow the user to load previously saved animation configurations from the disk.
 D-OTH01-F,Save Format,The system should use it's own XML format to store saved animation configurations.

@@ -26,7 +26,8 @@
 
 \title{CO3201 Computer Science Project\\ Animating Digital Arithmetic\\
 Interim Report}
-\author{William Dargan\\ 249009872}
+\author{William Dargan\\ 249009872\\\\ Supervisor: Dr. Roy Crole\\ Principal
+Marker: Dr. Paula Severi}
 
 \setcounter{tocdepth}{3}
 
@@ -156,9 +157,34 @@ as follows:
 \chapter{Literature Review}
 
 \section{Underpinning Theory}
-The majority of the research for this project revolved around the computing
+The majority of the research for this project revolves around the computing
 theory behind digital arithmetic and the real-world hardware implementations of
-said theory.
+said theory. The operations covered include all 4 basic arithmetic operations:
+addition, subtraction, multiplication, and division; as well as bitwise
+operations such as: AND, OR, XOR, NOT, and left \& right shifts. Some of the
+bitwise operations are necessary to include as they make up part of an
+arithmetic operation, as is the case with subtraction, so I decided it would be
+better to include a more complete selection so that the user can use them as
+they see fit in complex animations.
+
+Hennessy and Patterson \cite[Ch.~3]{alma991009658349802746} include the most
+basic algorithms for each of the arithmetic operations and continue later with
+carry lookahead \cite[Appendix B, Sec.~B.6]{alma991009658349802746} as a faster
+alternative to ripple-carry addition. Similarly, Goldberg \cite{goldberg} also
+includes the same most basic algorithms, but also includes carry-skip and
+carry-select algorithms for addition, on top of carry lookahead, as well as
+more complex algorithms for both multiplication and division. These two sources
+demonstrate that there are plenty of algorithms for me to work with, however
+not all algorithms can be simply worked through on paper.
+
+When I was originally assigned this project my thoughts immediately went to the
+representations of calculations that one might write on paper when learning in
+a classroom or lecture. However, after conducting research into the various
+different algorithms used in hardware for the different operations I realised
+that some of those algorithms would be either incredibly difficult or
+impossible to represent with just the numbers themselves. Therefore, I decided
+to include both on-paper representations for algorithms that it is possible to
+do so, as well as hardware representations of all algorithms anyway.
 
 \section{Technology Stack} \label{tech_stack}
 As will be outlined and explained in much more depth in Section
