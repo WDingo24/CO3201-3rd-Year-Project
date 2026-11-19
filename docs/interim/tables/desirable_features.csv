@@ -5,3 +5,5 @@ D-GUI04-F,Animation Preview,The system should offer the user the option to view 
 D-GUI06-F,Complex State,The system must include a GUI state for configuring multi-operation animations.
 D-GUI09-F,Saving Animation Configs,The system should allow the user to save animation configurations to the disk.
 D-GUI10-F,Loading Animation Configs,The system should allow the user to load previously saved animation configurations from the disk.
+D-OTH01-F,Save Format,The system should use it's own XML format to store saved animation configurations.
+D-ANM16-F,Floating Point Arithmetic,The system should support floating point numbers for all animations.
