@@ -28,3 +28,8 @@ class Window(tk.Tk):
 
         self.__currentState = newState
         self.__currentState.frame.pack()
+
+    @currentState.deleter
+    def currentState(self):
+        if self.__currentState is not None:
+            self.__currentState.frame.destroy()
